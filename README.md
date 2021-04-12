@@ -6,6 +6,8 @@ A graphical user interface for minting native tokens on Cardano network, built w
 
 This is only a learning project and as such it is not recommended to be used for anything production related, so please use at your own risk. With that out of the way, you can find pre-built executables on the [releases](https://github.com/ElGatoLoco/cardmintano/releases) page.
 
+![Cardmintano demo](cardmintano.gif)
+
 ## How it works?
 
 In order to simplify usage and avoid having to build your own node, the app relies on having Daedalus wallet running. Everything that is entered through the UI is being used as payload for cli commands that are run in the background.
