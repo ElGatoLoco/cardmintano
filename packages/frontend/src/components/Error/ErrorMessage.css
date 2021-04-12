@@ -1,0 +1,17 @@
+.error-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 30px;
+  width: 100%;
+  z-index: 1;
+}
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #ff3333;
+  color: #f7f7f7;
+}

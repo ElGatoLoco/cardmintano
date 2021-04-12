@@ -1,0 +1,61 @@
+{
+  "name": "electron",
+  "author": "ElGatoLoco",
+  "description": "Electron app providing a GUI to mint native tokens on Cardano by integrating with cardano-cli and cardano-node",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": {
+    "nohoist": [
+      "**/electron",
+      "**/electron/**"
+    ]
+  },
+  "main": "./dist/main.js",
+  "scripts": {
+    "tsc": "tsc -w",
+    "start": "yarn electron .",
+    "build": "tsc --build tsconfig.json && NODE_ENV=production electron-builder build --publish never"
+  },
+  "dependencies": {
+    "fp-ts": "^2.9.5",
+    "fp-ts-contrib": "^0.1.21",
+    "retry-ts": "^0.1.2"
+  },
+  "devDependencies": {
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5",
+    "electron-reload": "^1.5.0"
+  },
+  "build": {
+    "productName": "Cardmintano",
+    "appId": "com.electron.cardmintano",
+    "extends": null,
+    "mac": {
+      "icon": "assets/icons/mac/1024x1024.icns",
+      "target": "dmg",
+      "extraResources": [
+        {
+          "from": "./scripts",
+          "to": "scripts",
+          "filter": [
+            "**/*"
+          ]
+        },
+        {
+          "from": "../frontend/build",
+          "to": "frontend",
+          "filter": [
+            "**/*"
+          ]
+        }
+      ]
+    },
+    "files": [
+      "dist/**/*"
+    ],
+    "directories": {
+      "buildResources": ".",
+      "output": "../../release"
+    }
+  }
+}

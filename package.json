@@ -1,0 +1,58 @@
+{
+  "name": "cardmintano",
+  "author": "ElGatoLoco",
+  "description": "Electron + React app providing a GUI to mint native tokens on Cardano by integrating with cardano-cli and cardano-node",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "frontend:start": "yarn workspace frontend start",
+    "frontend:build": "yarn workspace frontend build",
+    "electron:start": "yarn workspace electron start",
+    "electron:tsc": "yarn workspace electron tsc",
+    "electron:build": "yarn workspace electron build",
+    "start": "concurrently --kill-others-on-fail \"yarn frontend:start\" \"yarn electron:tsc\" \"wait-on http://localhost:3000 && NODE_ENV=development yarn electron:start\"",
+    "build": "yarn frontend:build && yarn electron:build"
+  },
+  "dependencies": {
+    "fp-ts": "^2.9.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.37",
+    "concurrently": "^6.0.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^6.0.0",
+    "import-sort-style-module": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "prettier-plugin-import-sort": "^0.0.6",
+    "typescript": "^4.1.2",
+    "wait-on": "^5.3.0"
+  },
+  "lint-staged": {
+    "./**/*.{js,jsx,ts,tsx}": [
+      "yarn lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn tsc --noEmit && lint-staged"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "importSort": {
+    ".js, .jsx, .ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.fund-address-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 80px);
+}
+code.address {
+  width: 50%;
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  padding: 10px;
+  word-wrap: break-word;
+  margin-bottom: 10px;
+}
